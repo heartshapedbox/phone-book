@@ -18,7 +18,7 @@ class App():
         self.accent_color4 = '#f878b6'
         self.accent_color5 = '#d6478d'
         self.accent_color6 = '#000000'
-        self.accent_font = ('Pacifico', 22)
+        self.accent_header_font = ('Pacifico', 22)
         
         self.root = customtkinter.CTk()
         self.root.title('Phone Book')
@@ -34,7 +34,7 @@ class App():
     def show_menu(self):
         self.header_frame = Frame(self.root, background = self.accent_color1)
         self.header_frame.pack(pady = 25)
-        self.header_lbl = customtkinter.CTkLabel(self.header_frame, anchor = 'center', text = 'PhoneBook', text_font = self.accent_font, text_color = self.accent_color2)
+        self.header_lbl = customtkinter.CTkLabel(self.header_frame, anchor = 'center', text = 'PhoneBook', text_font = self.accent_header_font, text_color = self.accent_color2)
         self.header_lbl.grid(row = 0, column = 0)
         
         self.menu_frame = Frame(self.root, background = self.accent_color1)
