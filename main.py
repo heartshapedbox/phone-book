@@ -4,8 +4,8 @@ import customtkinter
 import sqlite3
 import pyglet
 import os
-os.chdir('C:\\Users\\baben\\Documents\\GitHub\\phone-book\\database\\')
-pyglet.font.add_file('C:\\Users\\baben\\Documents\\GitHub\\phone-book\\fonts\\Pacifico.ttf')
+os.chdir('C:\\Users\\baben\\Documents\\GitHub\\phone-book\\')
+pyglet.font.add_file('fonts\\Pacifico.ttf')
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme('dark-blue')
 
@@ -22,12 +22,12 @@ class App():
         
         self.root = customtkinter.CTk()
         self.root.title('Phone Book')
+        self.root['bg'] = self.accent_color1
         x = int(self.root.winfo_screenwidth() // 2.5)
         y = int(self.root.winfo_screenheight() * 0.2)
+        x, y = str(x), str(y)
         self.root.geometry(f'400x400+{x}+{y}')
         self.root.resizable(0, 0)
-        self.root['bg'] = self.accent_color1
-        
         self.show_menu()
         self.root.mainloop()
     
@@ -131,7 +131,7 @@ class App():
         self.db_frame.pack(pady = 30)
         self.label = customtkinter.CTkLabel(self.db_frame, text = '')
         tmp = []
-        db = sqlite3.connect('phone-book.db')
+        db = sqlite3.connect('database\\phone-book.db')
         cursor = db.cursor()
         cursor.execute("""SELECT * FROM Names""")
         
@@ -216,7 +216,7 @@ class App():
         self.name = self.name_entry.get()
         self.surname = self.surname_entry.get()
         self.number = self.number_entry.get()
-        db = sqlite3.connect('phone-book.db')
+        db = sqlite3.connect('database\\phone-book.db')
         cursor = db.cursor()
         
         if len(self.name) > 0 and len(self.surname) > 0 and len(self.number) > 0:
@@ -237,7 +237,7 @@ class App():
     def search(self):
         self.surname = self.search_for_surname_entry.get()
         tmp = []
-        db = sqlite3.connect('phone-book.db')
+        db = sqlite3.connect('database\\phone-book.db')
         cursor = db.cursor()
         
         if len(self.surname) > 0:
@@ -263,7 +263,7 @@ class App():
     def remove(self):
         self.id = self.search_for_id_entry.get()
         tmp = []
-        db = sqlite3.connect('phone-book.db')
+        db = sqlite3.connect('database\\phone-book.db')
         cursor = db.cursor()
         cursor.execute("""SELECT * FROM Names""")
         
