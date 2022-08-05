@@ -161,7 +161,7 @@ class App():
         self.number_label.grid(row = 2, column = 0, pady = 2)
         
         self.name_entry = customtkinter.CTkEntry(self.new_number_frame, border_width = 0, corner_radius = 6)
-        self.name_entry.focus()
+        self.name_entry.after(500, lambda: self.name_entry.focus())
         self.name_entry.grid(row = 0, column = 1)
         self.surname_entry = customtkinter.CTkEntry(self.new_number_frame, border_width = 0, corner_radius = 6)
         self.surname_entry.grid(row = 1, column = 1)
@@ -184,7 +184,7 @@ class App():
         self.search_for_surname.grid(row = 0, column = 0, pady = 2)
         
         self.search_for_surname_entry = customtkinter.CTkEntry(self.search_for_surname_frame, border_width = 0, corner_radius = 6)
-        self.search_for_surname_entry.focus()
+        self.search_for_surname_entry.after(500, lambda: self.search_for_surname_entry.focus())
         self.search_for_surname_entry.grid(row = 0, column = 1)
         
         self.message = customtkinter.CTkLabel(self.search_for_surname_frame, anchor = 's', text = '')
@@ -203,7 +203,7 @@ class App():
         self.search_for_id.grid(row = 0, column = 0, pady = 2)
         
         self.search_for_id_entry = customtkinter.CTkEntry(self.remove_number_from_db_frame, border_width = 0, corner_radius = 6)
-        self.search_for_id_entry.focus()
+        self.search_for_id_entry.after(500, lambda: self.search_for_id_entry.focus())
         self.search_for_id_entry.grid(row = 0, column = 1)
         
         self.message = customtkinter.CTkLabel(self.remove_number_from_db_frame, anchor = 's', text = '')
