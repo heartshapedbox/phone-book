@@ -22,6 +22,7 @@ class App():
         
         self.root = customtkinter.CTk()
         self.root.title('Phone Book')
+        self.root.iconbitmap('assets\\phone-book.ico')
         self.root['bg'] = self.accent_color1
         x = int(self.root.winfo_screenwidth() // 2.5)
         y = int(self.root.winfo_screenheight() * 0.2)
@@ -43,7 +44,7 @@ class App():
         self.btn2 = customtkinter.CTkButton(self.menu_frame, text = 'Search for surname', cursor = 'hand2', width = 200, command = lambda:self.show_search_for_surname())
         self.btn3 = customtkinter.CTkButton(self.menu_frame, text = 'Add to phone book', cursor = 'hand2', width = 200, command = lambda:self.show_add_number_to_db())
         self.btn4 = customtkinter.CTkButton(self.menu_frame, text = 'Delete from phone book', cursor = 'hand2', width = 200, command = lambda:self.show_remove_number_from_db())
-        self.btn5 = customtkinter.CTkButton(self.menu_frame, text = 'Quit', cursor = 'hand2', width = 200, command = lambda:quit())
+        self.btn5 = customtkinter.CTkButton(self.menu_frame, text = 'Quit', cursor = 'hand2', width = 200, command = lambda:self.quit())
         
         for i in (self.btn1, self.btn2, self.btn3, self.btn4):
             i.configure(
@@ -301,6 +302,10 @@ class App():
             self.btn_remove.destroy()
         self.btn_back.destroy()
         self.show_menu()
+    
+    
+    def quit(self):
+        self.root.destroy()
 
 
 if __name__ == "__main__":
