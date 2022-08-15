@@ -10,8 +10,9 @@ customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme('dark-blue')
 
 
-class App():
+class App(customtkinter.CTk):
     def __init__(self):
+        super().__init__()
         self.accent_color1 = '#ededed'
         self.accent_color2 = '#3b65ad'
         self.accent_color3 = '#608bd5'
@@ -20,25 +21,24 @@ class App():
         self.accent_color6 = '#000000'
         self.accent_header_font = ('Pacifico', 22)
         
-        self.root = customtkinter.CTk()
-        self.root.title('Phone Book')
-        self.root.iconbitmap('assets\\phone-book.ico')
-        self.root['bg'] = self.accent_color1
-        x = int(self.root.winfo_screenwidth() // 2.5)
-        y = int(self.root.winfo_screenheight() * 0.2)
+        self.title('Phone Book')
+        self.iconbitmap('assets\\phone-book.ico')
+        self['bg'] = self.accent_color1
+        x = int(self.winfo_screenwidth() // 2.5)
+        y = int(self.winfo_screenheight() * 0.2)
         x, y = str(x), str(y)
-        self.root.geometry(f'400x400+{x}+{y}')
-        self.root.resizable(0, 0)
+        self.geometry(f'400x400+{x}+{y}')
+        self.resizable(0, 0)
         self.show_menu()
-        self.root.mainloop()
+    
     
     def show_menu(self):
-        self.header_frame = Frame(self.root, background = self.accent_color1)
+        self.header_frame = Frame(self, background = self.accent_color1)
         self.header_frame.pack(pady = 25)
         self.header_lbl = customtkinter.CTkLabel(self.header_frame, anchor = 'center', text = 'PhoneBook', text_font = self.accent_header_font, text_color = self.accent_color2)
         self.header_lbl.grid(row = 0, column = 0)
         
-        self.menu_frame = Frame(self.root, background = self.accent_color1)
+        self.menu_frame = Frame(self, background = self.accent_color1)
         self.menu_frame.pack(pady = 5)
         self.btn1 = customtkinter.CTkButton(self.menu_frame, text = 'View phone book', cursor = 'hand2', width = 200, command = lambda:self.show_db())
         self.btn2 = customtkinter.CTkButton(self.menu_frame, text = 'Search for surname', cursor = 'hand2', width = 200, command = lambda:self.show_search_for_surname())
@@ -78,7 +78,7 @@ class App():
     
     
     def show_back_button(self):
-        self.btn_back = customtkinter.CTkButton(self.root, text = 'Back To Menu', cursor = 'hand2', width = 200, command = lambda:self.back())
+        self.btn_back = customtkinter.CTkButton(self, text = 'Back To Menu', cursor = 'hand2', width = 200, command = lambda:self.back())
         self.btn_back.configure(
             fg_color = self.accent_color2,
             hover_color = self.accent_color3,
@@ -90,7 +90,7 @@ class App():
     
     
     def show_add_button(self):
-        self.btn_add = customtkinter.CTkButton(self.root, text = 'Add', cursor = 'hand2', width = 200, command = lambda:self.add())
+        self.btn_add = customtkinter.CTkButton(self, text = 'Add', cursor = 'hand2', width = 200, command = lambda:self.add())
         self.btn_add.configure(
             fg_color = self.accent_color5,
             hover_color = self.accent_color4,
@@ -102,7 +102,7 @@ class App():
         
         
     def show_search_button(self):
-        self.btn_search = customtkinter.CTkButton(self.root, text = 'Search', cursor = 'hand2', width = 200, command = lambda:self.search())
+        self.btn_search = customtkinter.CTkButton(self, text = 'Search', cursor = 'hand2', width = 200, command = lambda:self.search())
         self.btn_search.configure(
             fg_color = self.accent_color5,
             hover_color = self.accent_color4,
@@ -114,7 +114,7 @@ class App():
         
         
     def show_remove_button(self):
-        self.btn_remove = customtkinter.CTkButton(self.root, text = 'Remove', cursor = 'hand2', width = 200, command = lambda:self.remove())
+        self.btn_remove = customtkinter.CTkButton(self, text = 'Remove', cursor = 'hand2', width = 200, command = lambda:self.remove())
         self.btn_remove.configure(
             fg_color = self.accent_color5,
             hover_color = self.accent_color4,
@@ -128,7 +128,7 @@ class App():
     def show_db(self):
         self.destroy_menu()
         self.page_name = 'show_db_frame'
-        self.db_frame = Frame(self.root, background = self.accent_color1)
+        self.db_frame = Frame(self, background = self.accent_color1)
         self.db_frame.pack(pady = 30)
         self.label = customtkinter.CTkLabel(self.db_frame, text = '')
         tmp = []
@@ -151,7 +151,7 @@ class App():
     def show_add_number_to_db(self):
         self.destroy_menu()
         self.page_name = 'show_add_number_frame'
-        self.new_number_frame = Frame(self.root, background = self.accent_color1)
+        self.new_number_frame = Frame(self, background = self.accent_color1)
         self.new_number_frame.pack(pady = 30)
         
         self.name_label = customtkinter.CTkLabel(self.new_number_frame, anchor = 'e', text = 'Enter a name:   ')
@@ -178,7 +178,7 @@ class App():
     def show_search_for_surname(self):
         self.destroy_menu()
         self.page_name = 'show_search_for_surname_frame'
-        self.search_for_surname_frame = Frame(self.root, background = self.accent_color1)
+        self.search_for_surname_frame = Frame(self, background = self.accent_color1)
         self.search_for_surname_frame.pack(pady = 30)
         
         self.search_for_surname = customtkinter.CTkLabel(self.search_for_surname_frame, anchor = 'e', text = 'Enter a surname:   ')
@@ -197,7 +197,7 @@ class App():
     def show_remove_number_from_db(self):
         self.destroy_menu()
         self.page_name = 'show_remove_number_from_db'
-        self.remove_number_from_db_frame = Frame(self.root, background = self.accent_color1)
+        self.remove_number_from_db_frame = Frame(self, background = self.accent_color1)
         self.remove_number_from_db_frame.pack(pady = 30)
         
         self.search_for_id = customtkinter.CTkLabel(self.remove_number_from_db_frame, anchor = 'e', text = 'Enter an ID:   ')
@@ -305,8 +305,8 @@ class App():
     
     
     def quit(self):
-        self.root.destroy()
+        self.destroy()
 
 
 if __name__ == "__main__":
-    App()
+    App().mainloop()
