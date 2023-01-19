@@ -4,7 +4,7 @@ import customtkinter
 import sqlite3
 import pyglet
 import os
-os.chdir('C:\\Users\\baben\\Documents\\GitHub\\phone-book\\')
+os.chdir('C:\\Users\\Dima\\Documents\\GitHub\\phone-book\\')
 pyglet.font.add_file('fonts\\Pacifico.ttf')
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme('dark-blue')
